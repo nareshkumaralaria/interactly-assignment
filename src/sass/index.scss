@@ -1,0 +1,299 @@
+// Sass files
+@import 'variable';
+@import 'mixing';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+body {
+    background: $white-color;
+}
+
+.app {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.loading {
+    @include FLEX;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    & img {
+        width: 80px;
+    }
+
+    & p {
+        position: absolute;
+        color: $white-color;
+        font-size: 10px;
+    }
+}
+
+.section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    & .split-item {
+        width: 50%;
+        // border: 1px solid red;
+
+        & .videos {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            position: relative;
+
+            & video {
+                cursor: pointer;
+                width: 100%;
+                height: 99.5vh;
+                object-fit: cover;
+            }
+
+            & .video-playhead {
+                align-items: center;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                height: 8px;
+                justify-content: space-between;
+                left: 0px;
+                outline: none;
+                overflow: hidden;
+                padding-left: 14px;
+                position: absolute;
+                top: 0px;
+                transition: all 0.2s ease-in-out 0s;
+                width: 100%;
+                z-index: 99;
+
+                & .playbar-wrapper {
+                    background: rgba(255, 255, 255, 0.2);
+                    height: 8px;
+                    bottom: 0px;
+                    left: 0px;
+                    max-height: 16px;
+                    position: absolute;
+                    top: 0px;
+                    transition: height 0.2s ease-out 0s;
+                    width: 100%;
+
+                    & .playbar {
+                        background: rgb(125, 0, 254);
+                        box-shadow: rgb(0 0 0 / 10%) 2px 0px 4px;
+                        height: 100%;
+                        max-height: 16px;
+                        pointer-events: none;
+                        transition: height 0.2s ease-out 0s;
+                        width: 15px;
+                    }
+                }
+            }
+
+            & .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+                transition: all 0.3s ease 0.3s;
+                background: none;
+                border: none;
+                padding: 0px;
+                outline: none;
+                opacity: 1;
+
+                & svg {
+                    filter: drop-shadow(rgba(0, 0, 0, 0.6) 0px 0px 20px);
+                    opacity: 0.8;
+                }
+            }
+
+            & .footer {
+                bottom: 0px;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                right: 0px;
+
+                & .footer-div {
+                    position: relative;
+                    z-index: 999;
+
+                    & .footer-button {
+                        margin-bottom: 42px;
+                        margin-left: 48px;
+                        background: rgba(125, 0, 254, 0.592);
+                        padding: 9px 12px 11px;
+                        border-radius: 8px;
+
+                        align-items: flex-start;
+                        border: none;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 13px;
+                        font-weight: 500;
+                        pointer-events: auto;
+                        color: rgb(255, 255, 255);
+
+                        & span {
+                            margin-bottom: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .right-section {
+        display: block;
+
+        & .option-section {
+            @include FLEX;
+            height: 100%;
+            width: 100%;
+
+            & .form {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                max-height: 100%;
+                transition: all 0.3s ease-in-out 0s;
+                width: 100%;
+
+                & .questions>* {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+
+                & .questions {
+                    display: block;
+                    max-height: 100%;
+                    min-height: 0px;
+                    overflow: auto;
+                    padding: 32px 0px;
+                    pointer-events: initial;
+                    transition: all 0.3s ease-in-out 0s;
+                    width: 100%;
+
+                    & button {
+                        align-items: center;
+                        background: rgba(17, 17, 17, 0.1);
+                        border: none;
+                        border-radius: 30px;
+                        color: rgb(17, 17, 17);
+                        cursor: pointer;
+                        display: flex;
+                        flex-grow: 2;
+                        font-size: 18px;
+                        font-weight: 500;
+                        height: auto;
+                        justify-content: flex-start;
+                        line-height: 20px;
+                        margin-bottom: 16px;
+                        outline: none;
+                        padding: 0px 24px 0px 16px;
+                        position: relative;
+                        transition: background-color 0.4s ease 0s;
+                        width: 336px;
+                        pointer-events: initial;
+
+                        & .option-no {
+                            @include FLEX;
+                            border-radius: 100px;
+                            color: rgb(255, 255, 255);
+                            flex-shrink: 0;
+                            font-size: 14px;
+                            background: rgb(125, 0, 254);
+                            font-weight: 500;
+                            height: 28px;
+                            margin-right: 10px;
+                            width: 28px;
+                        }
+
+                        & .option-title {
+                            cursor: pointer;
+                            flex-grow: 1;
+                            padding: 18px 0px;
+                            text-align: left;
+                        }
+                    }
+
+                    & .button {
+                        background: rgb(125, 0, 254);
+                        color: rgb(255, 255, 255);
+                        box-shadow: rgb(0 0 0 / 10%) 0px 10px 30px 0px;
+                        justify-content: center;
+                        font-weight: 700;
+                        transition: all 0.1s ease-in-out 0s;
+                        transform: perspective(1000px) translateZ(0px);
+                        border-radius: 16px;
+                        flex-direction: row;
+                        width: 100%;
+                        max-width: 332px;
+                        height: 68px;
+                        padding: 0px 24px 3px;
+                        line-height: 24px;
+                        text-transform: none;
+                        letter-spacing: initial;
+                        text-align: center;
+
+                        & .title {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+        position: relative;
+
+        & .split-item {
+            width: 100%;
+            height: 100%;
+
+            & .videos .footer .footer-div .footer-button {
+                flex-direction: row;
+                @include FLEX;
+                margin-bottom: 4px;
+                margin-left: 0px;
+                height: 32px;
+                width: 100%;
+                border-radius: 0px;
+
+                & span {
+                    margin-bottom: 0;
+                    margin-right: 6px;
+                }
+            }
+        }
+
+        & .right-section {
+            position: absolute;
+            bottom: 0;
+            height: auto;
+
+            & .option-section .form .questions {
+                margin-bottom: 40px;
+
+                & button {
+                    color: rgb(255, 255, 255);
+                    background: rgba(0, 0, 0, 0.45);
+                    margin-bottom: 8px;
+                }
+            }
+        }
+    }
+}
