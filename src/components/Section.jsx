@@ -30,9 +30,6 @@ const Section = ({ videoState }) => {
         console.log("handle");
         setSignUp(true)
     }
-    if (signUp) {
-        videoRef?.current?.pause();
-    }
     useEffect(() => {
         if (videoRef?.current?.paused) {
             setPlayIcon(true);
